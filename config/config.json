@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "list-visualizer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listVisualizer/ListVisualizerWebPart.js",
+          "manifest": "./src/webparts/listVisualizer/ListVisualizerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ListVisualizerWebPartStrings": "lib/webparts/listVisualizer/loc/{locale}.js"
+  }
+}

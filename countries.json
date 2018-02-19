@@ -1,0 +1,28 @@
+{
+    "source": {                 
+        "Title": "Countries"
+    },
+    "entities": [
+        {               
+            "Title": "Switzerland",
+            "BaseTemplate": 104         
+        },
+        {            
+            "Title": "Germany",
+            "BaseTemplate": 102         
+        },
+        {            
+            "Title": "United Kingdom",
+            "BaseTemplate": 101         
+        },
+        {             
+            "Title": "Japan"         
+        },
+        {             
+            "Title": "Armenia",
+            "BaseTemplate": 100,
+            "x": 100,
+            "y": 100         
+        }
+    ]   
+}

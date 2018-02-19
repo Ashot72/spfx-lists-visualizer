@@ -1,0 +1,27 @@
+{
+    "source": {    
+        "BaseTemplate": 100,        
+        "Title": "Armenia"
+    },
+    "entities": [
+        {        
+            "Title": "Yerevan",  
+            "BaseTemplate": 102       
+        },
+        {    
+            "Title": "Vanadzor"         
+        },
+        {          
+            "Title": "Gyumri"         
+        },
+        {          
+            "Title": "Ijevan"         
+        },
+        {          
+            "Title": "Ararat"         
+        },
+        {          
+            "Title": "Dilijan"         
+        }
+    ]   
+}
