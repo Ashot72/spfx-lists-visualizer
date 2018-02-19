@@ -1,0 +1,1620 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#954F72;
+	text-decoration:underline;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#0563C1" vlink="#954F72">
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt;line-height:107%'>Lists visualization application based
+on mobx-state-tree MobX powered state container and Office UI Fabric React
+components</span></p>
+
+<p class=MsoNormal>GitHub Repository: <a
+href="https://github.com/Ashot72/spfx-lists-visualizer" target="_blank">https://github.com/Ashot72/spfx-lists-visualizer</a></p>
+
+<p class=MsoNormal>Video: <a
+href="https://www.youtube.com/watch?v=0yCj5I7eJd0&amp;feature=youtu.be"
+target="_blank">https://www.youtube.com/watch?v=0yCj5I7eJd0&amp;feature=youtu.be</a></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>MobX <a href="https://mobx.js.org/index.html" target="_blank">https://mobx.js.org/index.html</a>
+is a state management library for JavaScript frontend application. The
+philosophy is very simple: </p>
+
+<p class=MsoNormal><i>Anything that can be derived from the state, should be
+derived automatically which includes the UI, data serialization, server
+communication etc.</i></p>
+
+<p class=MsoNormal><i>&nbsp;</i></p>
+
+<p class=MsoNormal>mobx-state-tree <a
+href="https://github.com/mobxjs/mobx-state-tree" target="_blank">https://github.com/mobxjs/mobx-state-tree</a> 
+is a state container that combines the simplicity and ease of mutable data with
+the traceability of immutable data and </p>
+
+<p class=MsoNormal>the reactiveness and performance of observable data.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Office UI Fabric React <a
+href="https://developer.microsoft.com/en-us/fabric#/components" target="_blank">https://developer.microsoft.com/en-us/fabric#/components</a> 
+is a responsive, mobile-first collection of robust components designed to make
+it quick and simple for you to </p>
+
+<p class=MsoNormal>create web experience using the Office Design Language.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>This application is a SharePoint framework (SPFx) demo
+application showing the power of MobX. One of the greatest features of MobX is separating
+the <i>state</i> from <i>view</i>. </p>
+
+<p class=MsoNormal>React applications usually depend on component hooks for
+fetching data.</p>
+
+<p class=MsoNormal>It is common to have a code like this</p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:0in'>componentDidMount()
+{</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in'>    fetchAllData();</p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:0in'>}</p>
+
+<p class=MsoNormal>in React apps. </p>
+
+<p class=MsoNormal>With MobX we do not do this as components can reactively
+react to state that lives outside of components. So, the app should not depend
+on component hooks and data fetching should happen</p>
+
+<p class=MsoNormal> in the store instead of components. You can write unit
+tests against the store to verify data fetching is happening without UI. It enables
+independent development of stores and components as UI is </p>
+
+<p class=MsoNormal>just renders this state. With MobX, usually one store
+captures entire state and logic of the application.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>What about routing? </p>
+
+<p class=MsoNormal>If the view is to be purely derived from the state, then
+routing should affect the state not the derived component tree. This means that
+we can take any generic router not specific to React by integrating browser
+history api. </p>
+
+<p class=MsoNormal>Routing and history is just another set kind of actions
+/reactions.</p>
+
+<p class=MsoNormal>So, instead of mounting components we just call store
+methods to transition our application the correct state.</p>
+
+<p class=MsoNormal>In React router case we write &lt;Route path=<span
+style='font-size:14.0pt;line-height:107%;color:black'> '</span>/products/<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> component={
+Products } /&gt;</p>
+
+<p class=MsoNormal>Instead, we should write &lt;Route path=<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>/products /<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> onEnter = { ()
+=&gt; store.LoadProducts() } /&gt;</p>
+
+<p class=MsoNormal>and don<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>t depend on router/links for navigation in MobX apps.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=878 height=671 id="Picture 1"
+src="index_files/image001.png"></p>
+
+<p class=MsoNormal>Figure 1</p>
+
+<p class=MsoNormal>I published the app and ran it. The app displays the current
+web title – <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>visualization<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> at the center of
+the canvas in red and lists titles around it connected via arrows going out
+from the web.</p>
+
+<p class=MsoNormal>(Hidden and Gallery lists are not retrieved). Lists are
+randomly rendered as their top/left values are generated randomly. Rectangles
+are draggable.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=818 height=674 id="Picture 2"
+src="index_files/image002.png"></p>
+
+<p class=MsoNormal>Figure 2</p>
+
+<p class=MsoNormal>I refreshed the page and got another view.  </p>
+
+<p class=MsoNormal>In mobx-state-tree (MTS) each <b>node </b>in the tree is
+described by two things: Its <b>type (</b>the shape of the thing) and its <b>data.</b></p>
+
+<p class=MsoNormal><b>&nbsp;</b></p>
+
+<p class=MsoNormal><img border=0 width=927 height=666 id="Picture 4"
+src="index_files/image003.png"></p>
+
+<p class=MsoNormal>Figure 3</p>
+
+<p class=MsoNormal>Here is entity.ts store file (we render both web and lists
+boxes based on this model). The most important type in MTS is <b>types.model</b>,
+which can be used to describe the shape of an object. </p>
+
+<p class=MsoNormal>By default, nodes can only be modified by one of their <b>actions,
+</b>or by actions higher up in the tree. Any fact that can be derived from your
+stat is called <b>View</b>.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=878 height=694 id="Picture 5"
+src="index_files/image004.png"></p>
+
+<p class=MsoNormal>Figure 4</p>
+
+<p class=MsoNormal>It is the main Store which includes other stores and defines
+its own views and actions.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=902 height=660 id="Picture 6"
+src="index_files/image005.png"></p>
+
+<p class=MsoNormal>Figure 5</p>
+
+<p class=MsoNormal>Context menu appears If you click on one of the lists. This
+is an actually Office UI Fabric React Callout control.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=778 height=622 id="Picture 7"
+src="index_files/image006.png"></p>
+
+<p class=MsoNormal>Figure 6</p>
+
+<p class=MsoNormal>Clicking <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Update Title<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span> link.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=766 height=543 id="Picture 8"
+src="index_files/image007.png"></p>
+
+<p class=MsoNormal>Figure 7</p>
+
+<p class=MsoNormal>The selected rectangle<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>s background is changed to orange. The sidebar,
+which is Office UI Fabric React Panel control, is opened so the user can update
+the title.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=845 height=601 id="Picture 9"
+src="index_files/image008.png"></p>
+
+<p class=MsoNormal>Figure 8</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>You will see instantaneous title update in the box as soon
+as you update the title in the sidebar.</p>
+
+<p class=MsoNormal>The update will take some milliseconds though as I used debounce
+function of 300 milliseconds to reduce server call.</p>
+
+<p class=MsoNormal>Only the arrow connecting the selected list (Research) to
+web (visualization) is rendered smoothly and </p>
+
+<p class=MsoNormal>no other boxes or arrows are re-rendered on the canvas while
+updating the title on the side bar thanks to MobX.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=725 height=606 id="Picture 10"
+src="index_files/image009.png"></p>
+
+<p class=MsoNormal>Figure 9</p>
+
+<p class=MsoNormal>List title updated via the app.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=870 height=531 id="Picture 13"
+src="index_files/image010.png"></p>
+
+<p class=MsoNormal>Figure 10</p>
+
+<p class=MsoNormal>Adding a new list to <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>visualization<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> web.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=971 height=672 id="Picture 14"
+src="index_files/image011.png"></p>
+
+<p class=MsoNormal>Figure 11</p>
+
+<p class=MsoNormal>New list was created with title <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>Update title<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=958 height=637 id="Picture 15"
+src="index_files/image012.png"></p>
+
+<p class=MsoNormal>Figure 12</p>
+
+<p class=MsoNormal>I updated the list title. You can either close x icon or
+click on the canvas to hide the panel.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=886 height=650 id="Picture 16"
+src="index_files/image013.png"></p>
+
+<p class=MsoNormal>Figure 13</p>
+
+<p class=MsoNormal> Side panel was closed the orange selection was changed to
+blue for <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>New
+List<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>. We
+will discuss colors later to find out why ‘New List’ obtained blue background.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=546 height=549 id="Picture 18"
+src="index_files/image014.png"></p>
+
+<p class=MsoNormal>Figure 14</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>New
+List<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>
+created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=793 height=512 id="Picture 19"
+src="index_files/image015.png"></p>
+
+<p class=MsoNormal>Figure 15</p>
+
+<p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s remove newly created list.</p>
+
+<p class=MsoNormal><img border=0 width=817 height=544 id="Picture 20"
+src="index_files/image016.png"></p>
+
+<p class=MsoNormal>Figure 16</p>
+
+<p class=MsoNormal>The list rectangle along with arrow was removed.</p>
+
+<p class=MsoNormal><img border=0 width=565 height=608 id="Picture 21"
+src="index_files/image017.png"></p>
+
+<p class=MsoNormal>Figure 17</p>
+
+<p class=MsoNormal>The list was removed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=884 height=616 id="Picture 22"
+src="index_files/image018.png"></p>
+
+<p class=MsoNormal>Figure 18</p>
+
+<p class=MsoNormal>Clicking <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Go to Items<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> on <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Forums<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> list.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1077 height=674 id="Picture 25"
+src="index_files/image019.png"></p>
+
+<p class=MsoNormal>Figure 19</p>
+
+<p class=MsoNormal>This time the list <span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>Forums<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> rendered at the center of the canvas along with its list
+items. Note, URL has changed (#/entity/d2cf7b0b-aec2-4692-8279-14aaf51d3d1d).</p>
+
+<p class=MsoNormal>In our application we use just the same models (Figure 3)
+rendering both web with lists and list with list items because we only deal
+with web/list/listItem titles for rendering.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=709 height=404 id="Picture 24"
+src="index_files/image020.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 20</p>
+
+<p class=MsoNormal>Here is data interface that required by store. You see the
+required property is <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Title<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> only. As we can
+see later with mock data implementation the interface is not implemented for SharePoint
+web and lists.</p>
+
+<p class=MsoNormal> ‘Id’ is an optional property. If not provided then new GUID
+is assigned as it required by the store. Property <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> is specific to SharePoint lists. </p>
+
+<p class=MsoNormal>We fill rectangles with colors based on <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> values. For example,
+<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> value for
+GenericList is 100 which corresponds to color blue (More on colors later).</p>
+
+<p class=MsoNormal>Logically we should have another name for <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>. The reason I choose
+it is I do not want to do an extra operation to change list<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>s <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTempalte<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> to another name,
+</p>
+
+<p class=MsoNormal>but you can still use <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>BaseTempalte<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> for another implementation which will be
+discussed later. Rectangle<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s left and top properties will correspond to <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>x<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> or <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>y<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> optional
+property</p>
+
+<p class=MsoNormal> if specified otherwise the values will randomly be generated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=842 height=593 id="Picture 26"
+src="index_files/image021.png"></p>
+
+<p class=MsoNormal>Figure 21</p>
+
+<p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s update the list item title the same way as we did for
+the list.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=727 height=672 id="Picture 27"
+src="index_files/image022.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 22</p>
+
+<p class=MsoNormal>Title updated on the canvas.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=794 height=611 id="Picture 28"
+src="index_files/image023.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 23</p>
+
+<p class=MsoNormal>Title updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=941 height=568 id="Picture 29"
+src="index_files/image024.png"></p>
+
+<p class=MsoNormal>Figure 24</p>
+
+<p class=MsoNormal>Adding new list item.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1002 height=670 id="Picture 30"
+src="index_files/image025.png"></p>
+
+<p class=MsoNormal>Figure 25</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>new
+list item<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>
+rendered on the canvas.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=757 height=660 id="Picture 31"
+src="index_files/image026.png"></p>
+
+<p class=MsoNormal>Figure 26</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>new
+list item<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>
+created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=655 height=644 id="Picture 32"
+src="index_files/image027.png"></p>
+
+<p class=MsoNormal>Figure 27</p>
+
+<p class=MsoNormal>Removing <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>new list item<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=608 height=634 id="Picture 33"
+src="index_files/image028.png"></p>
+
+<p class=MsoNormal>Figure 28</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>new
+list item<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>
+removed.</p>
+
+<p class=MsoNormal>The application is not implemented for SharePoint lists
+only. The app uses mobx-state-tree Dependency Injection. When creating a new
+state tree, it is</p>
+
+<p class=MsoNormal>possible to pass in environment specific data by passing an
+object as the second argument to a <i>.create</i> call. This object should be
+immutable and can be passed</p>
+
+<p class=MsoNormal>by any model in the tree by calling getEnv(self).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=989 height=688 id="Picture 57"
+src="index_files/image029.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 29</p>
+
+<p class=MsoNormal>In the main store under <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>views<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> we define <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>getEnv<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> for fetching, adding, updating,
+removing, alerting and getting color.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1184 height=584 id="Picture 36"
+src="index_files/image030.png"></p>
+
+<p class=MsoNormal>Figure 30</p>
+
+<p class=MsoNormal> As stated, we pass in environment specific data by passing
+an object as the second argument to a ‘.create’ call. Currently it is consuming
+<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>ListImplementation<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1206 height=676 id="Picture 37"
+src="index_files/image031.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 31</p>
+
+<p class=MsoNormal>We fetch data, add lists or list items, remove etc. via
+ListsService.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1199 height=587 id="Picture 39"
+src="index_files/image032.jpg"></p>
+
+<p class=MsoNormal>Figure 32</p>
+
+<p class=MsoNormal>I use @pnp/sp  <a
+href="https://pnp.github.io/pnp/sp/index.html" target="_blank">https://pnp.github.io/pnp/sp/index.html</a> 
+which contains fluent api to call the SharePoint rest services.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1172 height=689 id="Picture 41"
+src="index_files/image033.png"></p>
+
+<p class=MsoNormal>Figure 33</p>
+
+<p class=MsoNormal>In store, we fetch data using JavaScript Generators, add
+lists or list items etc. all via <span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>getEnv(self)<span style='font-size:14.0pt;line-height:
+107%;color:black'> '</span>. We also pass error via self.alert and display the
+error message the way we prefer.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1107 height=680 id="Picture 42"
+src="index_files/image034.png"></p>
+
+<p class=MsoNormal>Figure 34</p>
+
+<p class=MsoNormal>First, we check if the error is odataError otherwise display
+the error message or error using Dialog from <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>@microsoft/sp-dialog<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=744 height=398 id="Picture 43"
+src="index_files/image035.png"></p>
+
+<p class=MsoNormal>Figure 35</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Failed
+to fetch<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>
+alert.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1124 height=622 id="Picture 44"
+src="index_files/image036.jpg"></p>
+
+<p class=MsoNormal>Figure 36</p>
+
+<p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s switch to MockDataImplementation instead of ListImplementation.
+This time I will use local workbench as I have to serve <span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>cities.json<span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span> and <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>countries.json<span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span> files.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=731 height=642 id="Picture 45"
+src="index_files/image037.png"></p>
+
+<p class=MsoNormal>Figure 37</p>
+
+<p class=MsoNormal>Here is the format we pass to store. The source is located
+at the center of the canvas. In lists implementation case the source was web – <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>visualization<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> and</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>entities<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> were lists.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=956 height=348 id="Picture 46"
+src="index_files/image038.png"></p>
+
+<p class=MsoNormal>Figure 38</p>
+
+<p class=MsoNormal>Actually, we defined interface for that.</p>
+
+<p class=MsoNormal>In mock data implementation case (Figure 37) the source
+title name is <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Countries<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> and entities are
+countries (IData interface (Figure 20)).</p>
+
+<p class=MsoNormal>We do not have to specify Id as it will be generated if not
+provided. Also, I specified <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span> for countries except for Japan. Armenia defines x
+and y values so</p>
+
+<p class=MsoNormal>It will always be rendered in left 100 and top 100 position.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=919 height=649 id="Picture 47"
+src="index_files/image039.png"></p>
+
+<p class=MsoNormal>Figure 39</p>
+
+<p class=MsoNormal>Colors are defined in utils.ts file where key is <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> number.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1106 height=622 id="Picture 49"
+src="index_files/image040.png"></p>
+
+<p class=MsoNormal>Figure 40</p>
+
+<p class=MsoNormal>As you see <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Countries is the source and Countries are entities. Note <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>Armenia<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> is rendered in
+top 100 and Left 100 position. Both Japan and Switzerland are gray because there
+is no matching color</p>
+
+<p class=MsoNormal>for them (Japan does not define <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> and Switzerland <span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> number is 104
+and no matching color for it).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=967 height=585 id="Picture 50"
+src="index_files/image041.png"></p>
+
+<p class=MsoNormal>Figure 41</p>
+
+<p class=MsoNormal>I refreshed the page and Armenia is still in the same
+position (100, 100).</p>
+
+<p class=MsoNormal><img border=0 width=901 height=497 id="Picture 51"
+src="index_files/image042.png"></p>
+
+<p class=MsoNormal>Figure 42</p>
+
+<p class=MsoNormal>You may not specify colors for entities and the source if
+you want to.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=963 height=349 id="Picture 52"
+src="index_files/image043.png"></p>
+
+<p class=MsoNormal>Figure 43</p>
+
+<p class=MsoNormal>I just commented some lines. The same is true for source
+color (red – Countries).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=655 height=673 id="Picture 53"
+src="index_files/image044.png"></p>
+
+<p class=MsoNormal>Figure 44</p>
+
+<p class=MsoNormal>Here is cities.json file. The source is Armenia. Entities
+are cities of Armenia. If entities do not provide <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>BaseTemplate’<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>then the color is inherited form the
+source, in this case</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate’
+is 100. Entity <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Yerevan<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> will have its
+own color as it is the capital of Armenia.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=966 height=582 id="Picture 54"
+src="index_files/image045.png"></p>
+
+<p class=MsoNormal>Figure 45</p>
+
+<p class=MsoNormal>Selecting <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Armenia<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> and clicking on Go to Items (name <span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>Go to Items<span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span> is not changed for mock data).</p>
+
+<p class=MsoNormal><img border=0 width=888 height=485 id="Picture 55"
+src="index_files/image046.png"></p>
+
+<p class=MsoNormal>Figure 46</p>
+
+<p class=MsoNormal>All entities inherited blue color from <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>Armenia<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> source but
+Yerevan has its own color.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1169 height=606 id="Picture 56"
+src="index_files/image047.png"></p>
+
+<p class=MsoNormal>Figure 47</p>
+
+<p class=MsoNormal>Only fetching is implemented for mock data but we could also
+implement other methods as well. You will not get an error on UI though if you
+try to add, update or remove list and list items.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1012 height=530 id="Picture 58"
+src="index_files/image048.png"></p>
+
+<p class=MsoNormal>Figure 48</p>
+
+<p class=MsoNormal>I changed the code to load respective implementation based
+on environment type. Mock data implementation will be consumed for local
+workbench automatically.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1024 height=419 id="Picture 59"
+src="index_files/image049.png"></p>
+
+<p class=MsoNormal>Figure 49</p>
+
+<p class=MsoNormal>Our main store contains <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>view<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> which is the view state. We already
+stated in MobX, usually one store captures entire state and logic of the
+application. This is our <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Store<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> store.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=881 height=679 id="Picture 60"
+src="index_files/image050.png"></p>
+
+<p class=MsoNormal>Figure 50</p>
+
+<p class=MsoNormal>View type model has two properties <span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>page<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> and <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>selectedEntityId<span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>. We define currentUrl() where
+based on the current page we return different values. The store has</p>
+
+<p class=MsoNormal>two actions. When app is being loaded then
+openEntitiesPage() action is being called.  As you can see we do not load data
+via component hooks such as</p>
+
+<p class=MsoNormal>componentDidMount() {</p>
+
+<p class=MsoNormal>    fetchAllData();</p>
+
+<p class=MsoNormal>} </p>
+
+<p class=MsoNormal>because the components can with MobX reactively react to
+state that lives outside of components. This also means that you can write unit
+tests against the store to </p>
+
+<p class=MsoNormal>verify data fetching is happening without UI.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1050 height=624 id="Picture 61"
+src="index_files/image051.png"></p>
+
+<p class=MsoNormal>Figure 51</p>
+
+<p class=MsoNormal>This is the router. It is a simple router not React
+specific.</p>
+
+<p class=MsoNormal> </p>
+
+<p class=MsoNormal><img border=0 width=1072 height=606 id="Picture 71"
+src="index_files/image052.png"></p>
+
+<p class=MsoNormal>Figure 52</p>
+
+<p class=MsoNormal>createRouter is being called as soon as the app is being
+loaded. Based on the path we call the respective method via store.view. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=833 height=675 id="Picture 64"
+src="index_files/image053.png"></p>
+
+<p class=MsoNormal>Figure 53</p>
+
+<p class=MsoNormal>The app is loaded and store.view.openEntitiesPage() is
+called (Figure 50 ) then self.load.store() is called and data are retrieved
+form the server and rendered.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=828 height=671 id="Picture 65"
+src="index_files/image054.png"></p>
+
+<p class=MsoNormal>Figure 54</p>
+
+<p class=MsoNormal>Clicking <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Go to Items<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=904 height=678 id="Picture 66"
+src="index_files/image055.png"></p>
+
+<p class=MsoNormal>Figure 55</p>
+
+<p class=MsoNormal>Route matched <span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>#/entity/:entityId<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> and <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>store.view.openEntityPageById(entityId)<span
+style='font-size:14.0pt;line-height:107%;color:black'> '</span> is called. <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>#/entity/d2cf7b0b-aec2-4692-8279-14aaf51d3d1d<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> is appended to the
+path.</p>
+
+<p class=MsoNormal>If you try to refresh the page you will still be on the same
+page and see the same list items.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1003 height=166 id="Picture 70"
+src="index_files/image056.jpg"></p>
+
+<p class=MsoNormal>Figure 56</p>
+
+<p class=MsoNormal>You see <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Reaction<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>. In MobX <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Reaction<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> takes two functions, the first one (the <i>data</i>
+function) is tracked and returns data that is used as input for</p>
+
+<p class=MsoNormal>the second one the <i>effect</i> function.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=919 height=625 id="Picture 68"
+src="index_files/image057.png"></p>
+
+<p class=MsoNormal>Figure 57</p>
+
+<p class=MsoNormal>When openEntityPageById(id) was called then self.page value
+was changed to <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>entity<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> and id was
+assigned to self.selectedEntityId. As we have </p>
+
+<p class=MsoNormal>self.page (switch(self.page)) in currentUrl() and data
+function is () =&gt; store.view.currentUrl in <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>Reaction<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> (Figure 56) then </p>
+
+<p class=MsoNormal>window.history.pushState(null, null, path) (the effect
+function) is executed. Window.history.pushState() method allows to add history
+entries.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1060 height=495 id="Picture 72"
+src="index_files/image058.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 58</p>
+
+<p class=MsoNormal>We will navigate back to the initial page by clicking
+browser<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>s
+back button.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1159 height=327 id="Picture 73"
+src="index_files/image059.png"></p>
+
+<p class=MsoNormal>Figure 59</p>
+
+<p class=MsoNormal><i>Onpopstate </i>is an event handler for the <i>popstate </i>event
+on window. A <i>popstate </i>event is dispatched to the window each time the
+active history entry changes</p>
+
+<p class=MsoNormal>between two history entries for the same document. When we
+clicked browser<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>s
+<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Back<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> button then
+onpopstate event was called and we call router with the current hash. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=911 height=647 id="Picture 74"
+src="index_files/image060.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 60</p>
+
+<p class=MsoNormal>Back button was clicked and app is on the initial page. As
+you see we took a generic router not specific to React by integrating browser
+history api. </p>
+
+<p class=MsoNormal>Routing and history is just another set kind of actions
+/reactions as stated.</p>
+
+<p class=MsoNormal><i><u>We used URL to track the status of the application
+extending with # hash. It is preferable solution for Single Page Applications
+(SPA). We should not use the URL</u></i></p>
+
+<p class=MsoNormal><i><u>in SharePoint applications as we do not own the
+hosting surface. At least you could see how to do it in your SPA applications
+and maybe in some cases people still prefer</u></i></p>
+
+<p class=MsoNormal><i><u>hashing in SharePoint applications.</u></i></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=983 height=601 id="Picture 75"
+src="index_files/image061.png"></p>
+
+<p class=MsoNormal>Figure 61</p>
+
+<p class=MsoNormal>I used # hashing but you may prefer html5 routing (without
+hash) in your SPA application that hosted on Express for example. It is really
+easy to do it. What you have to do is</p>
+
+<p class=MsoNormal>replace <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>#/<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> to <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>/<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> in the project and change ‘hash’ to ‘pathname’ in
+ListVisualizer.tsx file ( window.location.hash changed to window.location.pathname)
+. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=849 height=645 id="Picture 76"
+src="index_files/image062.png"></p>
+
+<p class=MsoNormal>Figure 62</p>
+
+<p class=MsoNormal>We just pass store to Provider. <i>Provider </i>is a
+component that can pass stores using React<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>s context mechanism to child components.</p>
+
+<p class=MsoNormal>This is useful if you have things that you don<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>t want to pass
+through multiple layers of components explicitly. In our application we</p>
+
+<p class=MsoNormal>also used <i>inject</i>. <i>Inject </i>can be used to pick
+up those stores.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1110 height=523 id="Picture 77"
+src="index_files/image063.jpg"></p>
+
+<p class=MsoNormal>Figure 63</p>
+
+<p class=MsoNormal>Based on the <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>store.view.page<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span> we render the same components in this application (list
+and list items pages look the same). Imagine another application, say, forums.
+You have different pages such as</p>
+
+<p class=MsoNormal>forums, topics, create topic, posts pages. In that case you
+will render different components.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s try to run the app via Chrome console not touching the
+app. This time we keep UI so we can track UI changes. Next, we will remove UI
+entirely and do the same one more time.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1153 height=657 id="Picture 78"
+src="index_files/image064.png"></p>
+
+<p class=MsoNormal>Figure 64</p>
+
+<p class=MsoNormal>Here is the initial rendering after loading the page.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1153 height=657 id="Picture 79"
+src="index_files/image065.png"></p>
+
+<p class=MsoNormal>Figure 65</p>
+
+<p class=MsoNormal>We ran store.load() and you see new rendering. (compare
+Figure 64 to Figure 65). I ran store.load() directly but you may run store.view.openEntitiesPage()
+instead.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1152 height=659 id="Picture 80"
+src="index_files/image066.png"></p>
+
+<p class=MsoNormal>Figure 66</p>
+
+<p class=MsoNormal>By running <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>store.entities.keys()<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> we can obtain both source and entities
+keys.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1149 height=652 id="Picture 81"
+src="index_files/image067.png"></p>
+
+<p class=MsoNormal>Figure 67</p>
+
+<p class=MsoNormal>I ran var entity = store.entities.get(<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>8c048c5d-d34e-49df-ab9c-3c3170da83fb<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>) command to get
+the entity reference. Then I ran</p>
+
+<p class=MsoNormal>entity.isSource to make sure that it is an entity not the
+source (source is <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>visualization<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1155 height=655 id="Picture 83"
+src="index_files/image068.png"></p>
+
+<p class=MsoNormal>Figure 68</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>I called store.setSelection(entity) to select the entity.
+You can see the entity <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>Generate Invoices<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span> turned to orange as it is the one we selected. Also,
+side panel opened so we can update the entry.</p>
+
+<p class=MsoNormal>By the way, instead of store.setSelection(entity)  you could
+also call by Id store.setSelection(<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>8c048c5d-d34e-49df-ab9c-3c3170da83fb<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>) .</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1149 height=652 id="Picture 85"
+src="index_files/image069.png"></p>
+
+<p class=MsoNormal>Figure 69.</p>
+
+<p class=MsoNormal>I ran store.updateTitle(<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>Generate Invoices!!!!!<span
+style='font-size:14.0pt;line-height:107%;color:black'> '</span>) and  you could
+see the title was updated  both on the panel and UI. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1154 height=622 id="Picture 86"
+src="index_files/image070.png"></p>
+
+<p class=MsoNormal>Figure 70</p>
+
+<p class=MsoNormal>I ran store.setSelection(null). The panel was closed and orange
+selection turned into the color we defined for that entity.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=753 height=588 id="Picture 87"
+src="index_files/image071.png"></p>
+
+<p class=MsoNormal>Figure 71</p>
+
+<p class=MsoNormal>List title updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1100 height=620 id="Picture 88"
+src="index_files/image072.png"></p>
+
+<p class=MsoNormal>Figure 72</p>
+
+<p class=MsoNormal>Getting source reference by calling var source =
+store.entities.get(<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>721bef6c-6df9-4f87-bfe9-99d17a528b47<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>) and running</p>
+
+<p class=MsoNormal>entity.isSource to make sure it is the source.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1151 height=647 id="Picture 89"
+src="index_files/image073.png"></p>
+
+<p class=MsoNormal>Figure 73</p>
+
+<p class=MsoNormal>Creating new entity by calling store.createEntity(<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>test<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>, <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>red<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>, 100, 100,
+source). Entity was created and we can update the title if we want.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1119 height=618 id="Picture 90"
+src="index_files/image074.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 74</p>
+
+<p class=MsoNormal>We do not want to update the title we just close the panel
+by running store.setSelection(null).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1104 height=655 id="Picture 91"
+src="index_files/image075.png"></p>
+
+<p class=MsoNormal>Figure 75</p>
+
+<p class=MsoNormal>I run store.entities.keys() one more time to get the newly
+created entity id. It is the last one <span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>0be90307-433e-43b5-b022-298bafdd384f<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=765 height=658 id="Picture 92"
+src="index_files/image076.png"></p>
+
+<p class=MsoNormal>Figure 76</p>
+
+<p class=MsoNormal>This is the <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>test<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> list created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1074 height=652 id="Picture 93"
+src="index_files/image077.png"></p>
+
+<p class=MsoNormal>Figure 77</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Getting the entity reference. var entity =
+store.entities.get(<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>0be90307-433e-43b5-b022-298bafdd384f<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1080 height=655 id="Picture 94"
+src="index_files/image078.png"></p>
+
+<p class=MsoNormal>Figure 78</p>
+
+<p class=MsoNormal>I removed the newly created entity, store.removeEntityWithConnector(entity).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=909 height=666 id="Picture 95"
+src="index_files/image079.png"></p>
+
+<p class=MsoNormal>Figure 79</p>
+
+<p class=MsoNormal>It is not there anymore.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1072 height=649 id="Picture 96"
+src="index_files/image080.png"></p>
+
+<p class=MsoNormal>Figure 80</p>
+
+<p class=MsoNormal>I ran <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>store.view.openEntityPageById(<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>8c048c5d-d34e-49df-ab9c-3c3170da83fb<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>)<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> and navigated to
+list items page. Note, URL was changed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1124 height=652 id="Picture 97"
+src="index_files/image081.png"></p>
+
+<p class=MsoNormal>Figure 81</p>
+
+<p class=MsoNormal>Getting the store reference. var source =
+store.entities.get(<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>8c048c5d-d34e-49df-ab9c-3c3170da83fb<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>) </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1122 height=655 id="Picture 99"
+src="index_files/image082.png"></p>
+
+<p class=MsoNormal>Figure 82</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Creating new entity store.createEntity(<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>test<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>, <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>red<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>, 100, 100,
+source).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1102 height=663 id="Picture 100"
+src="index_files/image083.png"></p>
+
+<p class=MsoNormal>Figure 83</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>test<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> list item
+created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1114 height=650 id="Picture 101"
+src="index_files/image084.png"></p>
+
+<p class=MsoNormal>Figure 84</p>
+
+<p class=MsoNormal>Unselect the entity. store.setSelection(null)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1132 height=653 id="Picture 102"
+src="index_files/image085.png"></p>
+
+<p class=MsoNormal>Figure 85</p>
+
+<p class=MsoNormal>Run store.entities.keys() to get the entity Id.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1103 height=652 id="Picture 103"
+src="index_files/image086.png"></p>
+
+<p class=MsoNormal>Figure 86</p>
+
+<p class=MsoNormal>Getting the entity reference var entity =
+store.entities.get(<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>2<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>). Also, to be
+sure it is the entity entity.isSource.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1108 height=655 id="Picture 104"
+src="index_files/image087.png"></p>
+
+<p class=MsoNormal>Figure 87</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Select the entity - store.setSelection(entity)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1073 height=655 id="Picture 105"
+src="index_files/image088.png"></p>
+
+<p class=MsoNormal>Figure 88</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Updated the title store.updateTitle(<span style='font-size:
+14.0pt;line-height:107%;color:black'>'</span>test!!!!!<span style='font-size:
+14.0pt;line-height:107%;color:black'> '</span>)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=980 height=671 id="Picture 106"
+src="index_files/image089.png"></p>
+
+<p class=MsoNormal>Figure 89</p>
+
+<p class=MsoNormal>Title updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1104 height=656 id="Picture 107"
+src="index_files/image090.png"></p>
+
+<p class=MsoNormal>Figure 90</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Unselect the entity.  store.setSelection(null)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1131 height=656 id="Picture 108"
+src="index_files/image091.png"></p>
+
+<p class=MsoNormal>Figure 91</p>
+
+<p class=MsoNormal>Remove the entity. store.removeEntityWithConnector(entity)</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=798 height=670 id="Picture 110"
+src="index_files/image092.png"></p>
+
+<p class=MsoNormal>Figure 92</p>
+
+<p class=MsoNormal>The list item deleted.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1019 height=655 id="Picture 109"
+src="index_files/image093.png"></p>
+
+<p class=MsoNormal>Figure 93</p>
+
+<p class=MsoNormal>Back to initial page - store.load(). I ran store.load()
+directly but you may run store.view.openEntitiesPage() instead.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>s throw away entire rendering and do the same.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1052 height=633 id="Picture 111"
+src="index_files/image094.jpg"></p>
+
+<p class=MsoNormal>Figure 94</p>
+
+<p class=MsoNormal>I would prefer to comment RactDom .render line and test the
+application, but create store part is defined in ListVisualizer file referenced
+from this file. I do not want to </p>
+
+<p class=MsoNormal>modify this file and bring all the required code from
+ListVisualizer file here to test.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1095 height=544 id="Picture 112"
+src="index_files/image095.png"></p>
+
+<p class=MsoNormal>Figure 95</p>
+
+<p class=MsoNormal>Instead I will change Provider section to null.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=957 height=541 id="Picture 113"
+src="index_files/image096.png"></p>
+
+<p class=MsoNormal>Figure 96</p>
+
+<p class=MsoNormal>Here is the change.</p>
+
+<p class=MsoNormal> </p>
+
+<p class=MsoNormal><img border=0 width=1203 height=412 id="Picture 114"
+src="index_files/image097.png"></p>
+
+<p class=MsoNormal>Figure 97</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Nothing is rendered and I ran first command store.load();</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1330 height=544 id="Picture 115"
+src="index_files/image098.png"></p>
+
+<p class=MsoNormal>Figure 98</p>
+
+<p class=MsoNormal>List title updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=770 height=658 id="Picture 116"
+src="index_files/image099.png"></p>
+
+<p class=MsoNormal>Figure 99</p>
+
+<p class=MsoNormal>List title updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1238 height=594 id="Picture 117"
+src="index_files/image100.jpg"></p>
+
+<p class=MsoNormal>Figure 100</p>
+
+<p class=MsoNormal>New List <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>test<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=706 height=650 id="Picture 118"
+src="index_files/image101.png"></p>
+
+<p class=MsoNormal>Figure 101</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>New List <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>test<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1134 height=578 id="Picture 119"
+src="index_files/image102.jpg"></p>
+
+<p class=MsoNormal>Figure 102</p>
+
+<p class=MsoNormal>List <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>test<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> removed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=909 height=683 id="Picture 120"
+src="index_files/image103.png"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Figure 103</p>
+
+<p class=MsoNormal>List <span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span>test<span style='font-size:14.0pt;line-height:107%;
+color:black'>'</span> removed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1148 height=608 id="Picture 121"
+src="index_files/image104.png"></p>
+
+<p class=MsoNormal>Figure 104</p>
+
+<p class=MsoNormal>Navigated to the list item<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>s page. URL was changed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1148 height=605 id="Picture 122"
+src="index_files/image105.png"></p>
+
+<p class=MsoNormal>Figure 105</p>
+
+<p class=MsoNormal>List item created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=779 height=574 id="Picture 123"
+src="index_files/image106.png"></p>
+
+<p class=MsoNormal>Figure 106</p>
+
+<p class=MsoNormal>List item created.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1170 height=591 id="Picture 124"
+src="index_files/image107.jpg"></p>
+
+<p class=MsoNormal>Figure 107</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>List item updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=910 height=590 id="Picture 125"
+src="index_files/image108.png"></p>
+
+<p class=MsoNormal>Figure 108</p>
+
+<p class=MsoNormal>List item updated.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1065 height=609 id="Picture 126"
+src="index_files/image109.png"></p>
+
+<p class=MsoNormal>Figure 109</p>
+
+<p class=MsoNormal>List item removed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=848 height=593 id="Picture 127"
+src="index_files/image110.png"></p>
+
+<p class=MsoNormal>Figure 110</p>
+
+<p class=MsoNormal>List item removed.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img border=0 width=1155 height=627 id="Picture 128"
+src="index_files/image111.png"></p>
+
+<p class=MsoNormal>Figure 111</p>
+
+<p class=MsoNormal>Back to initial page. URL was changed. I ran store.load()
+directly but you may run store.view.openEntitiesPage() instead.</p>
+
+</div>
+
+</body>
+
+</html>
