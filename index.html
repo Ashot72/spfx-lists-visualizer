@@ -97,6 +97,10 @@ href="https://github.com/Ashot72/spfx-lists-visualizer" target="_blank">https://
 href="https://www.youtube.com/watch?v=0yCj5I7eJd0&amp;feature=youtu.be"
 target="_blank">https://www.youtube.com/watch?v=0yCj5I7eJd0&amp;feature=youtu.be</a></p>
 
+<p class=MsoNormal>Application description page: <a
+href="https://ashot72.github.io/spfx-lists-visualizer/index.html"
+target="_blank">https://ashot72.github.io/spfx-lists-visualizer/index.html</a></p>
+
 <p class=MsoNormal>&nbsp;</p>
 
 <p class=MsoNormal>MobX <a href="https://mobx.js.org/index.html" target="_blank">https://mobx.js.org/index.html</a>
@@ -110,7 +114,7 @@ communication etc.</i></p>
 <p class=MsoNormal><i>&nbsp;</i></p>
 
 <p class=MsoNormal>mobx-state-tree <a
-href="https://github.com/mobxjs/mobx-state-tree" target="_blank">https://github.com/mobxjs/mobx-state-tree</a> 
+href="https://github.com/mobxjs/mobx-state-tree" target="_blank">https://github.com/mobxjs/mobx-state-tree</a>
 is a state container that combines the simplicity and ease of mutable data with
 the traceability of immutable data and </p>
 
@@ -139,7 +143,7 @@ fetching data.</p>
 <p class=MsoListParagraphCxSpFirst style='margin-left:0in'>componentDidMount()
 {</p>
 
-<p class=MsoListParagraphCxSpMiddle style='margin-left:0in'>    fetchAllData();</p>
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in'> fetchAllData();</p>
 
 <p class=MsoListParagraphCxSpLast style='margin-left:0in'>}</p>
 
@@ -149,8 +153,8 @@ fetching data.</p>
 react to state that lives outside of components. So, the app should not depend
 on component hooks and data fetching should happen</p>
 
-<p class=MsoNormal> in the store instead of components. You can write unit
-tests against the store to verify data fetching is happening without UI. It enables
+<p class=MsoNormal>in the store instead of components. You can write unit tests
+against the store to verify data fetching is happening without UI. It enables
 independent development of stores and components as UI is </p>
 
 <p class=MsoNormal>just renders this state. With MobX, usually one store
@@ -160,10 +164,10 @@ captures entire state and logic of the application.</p>
 
 <p class=MsoNormal>What about routing? </p>
 
-<p class=MsoNormal>If the view is to be purely derived from the state, then
-routing should affect the state not the derived component tree. This means that
-we can take any generic router not specific to React by integrating browser
-history api. </p>
+<p class=MsoNormal>If the view is to be purely derived from the state, then routing
+should affect the state not the derived component tree. This means that we can
+take any generic router not specific to React by integrating browser history
+api. </p>
 
 <p class=MsoNormal>Routing and history is just another set kind of actions
 /reactions.</p>
@@ -192,7 +196,7 @@ src="index_files/image001.png"></p>
 <p class=MsoNormal>Figure 1</p>
 
 <p class=MsoNormal>I published the app and ran it. The app displays the current
-web title – <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>visualization<span
+web title <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>visualization<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span> at the center of
 the canvas in red and lists titles around it connected via arrows going out
 from the web.</p>
@@ -208,7 +212,7 @@ src="index_files/image002.png"></p>
 
 <p class=MsoNormal>Figure 2</p>
 
-<p class=MsoNormal>I refreshed the page and got another view.  </p>
+<p class=MsoNormal>I refreshed the page and got another view.</p>
 
 <p class=MsoNormal>In mobx-state-tree (MTS) each <b>node </b>in the tree is
 described by two things: Its <b>type (</b>the shape of the thing) and its <b>data.</b></p>
@@ -340,10 +344,12 @@ src="index_files/image013.png"></p>
 
 <p class=MsoNormal>Figure 13</p>
 
-<p class=MsoNormal> Side panel was closed the orange selection was changed to
+<p class=MsoNormal>Side panel was closed the orange selection was changed to
 blue for <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>New
 List<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>. We
-will discuss colors later to find out why ‘New List’ obtained blue background.</p>
+will discuss colors later to find out why <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>New List<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> obtained blue background.</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -421,13 +427,15 @@ src="index_files/image020.png"></p>
 <p class=MsoNormal>Here is data interface that required by store. You see the
 required property is <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Title<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span> only. As we can
-see later with mock data implementation the interface is not implemented for SharePoint
-web and lists.</p>
+see later with mock data implementation the interface is not implemented for
+SharePoint web and lists.</p>
 
-<p class=MsoNormal> ‘Id’ is an optional property. If not provided then new GUID
-is assigned as it required by the store. Property <span style='font-size:14.0pt;
-line-height:107%;color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;
-line-height:107%;color:black'>'</span> is specific to SharePoint lists. </p>
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Id<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> is an optional
+property. If not provided then new GUID is assigned as it required by the
+store. Property <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> is specific to
+SharePoint lists. </p>
 
 <p class=MsoNormal>We fill rectangles with colors based on <span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
@@ -456,7 +464,7 @@ style='font-size:14.0pt;line-height:107%;color:black'>'</span>y<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span> optional
 property</p>
 
-<p class=MsoNormal> if specified otherwise the values will randomly be generated.</p>
+<p class=MsoNormal>if specified otherwise the values will randomly be generated.</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -577,9 +585,11 @@ src="index_files/image030.png"></p>
 
 <p class=MsoNormal>Figure 30</p>
 
-<p class=MsoNormal> As stated, we pass in environment specific data by passing
-an object as the second argument to a ‘.create’ call. Currently it is consuming
-<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>ListImplementation<span
+<p class=MsoNormal>As stated, we pass in environment specific data by passing
+an object as the second argument to a <span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span>.create<span style='font-size:14.0pt;line-height:
+107%;color:black'>'</span> call. Currently it is consuming <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>ListImplementation<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>.</p>
 
 <p class=MsoNormal>&nbsp;</p>
@@ -601,8 +611,8 @@ src="index_files/image032.jpg"></p>
 
 <p class=MsoNormal>Figure 32</p>
 
-<p class=MsoNormal>I use @pnp/sp  <a
-href="https://pnp.github.io/pnp/sp/index.html" target="_blank">https://pnp.github.io/pnp/sp/index.html</a> 
+<p class=MsoNormal>I use @pnp/sp <a
+href="https://pnp.github.io/pnp/sp/index.html">https://pnp.github.io/pnp/sp/index.html</a>
 which contains fluent api to call the SharePoint rest services.</p>
 
 <p class=MsoNormal>&nbsp;</p>
@@ -649,12 +659,12 @@ src="index_files/image036.jpg"></p>
 <p class=MsoNormal>Figure 36</p>
 
 <p class=MsoNormal>Let<span style='font-size:14.0pt;line-height:107%;
-color:black'>'</span>s switch to MockDataImplementation instead of ListImplementation.
-This time I will use local workbench as I have to serve <span style='font-size:
-14.0pt;line-height:107%;color:black'>'</span>cities.json<span style='font-size:
-14.0pt;line-height:107%;color:black'>'</span> and <span style='font-size:14.0pt;
-line-height:107%;color:black'>'</span>countries.json<span style='font-size:
-14.0pt;line-height:107%;color:black'>'</span> files.</p>
+color:black'>'</span>s switch to MockDataImplementation instead of
+ListImplementation. This time I will use local workbench as I have to serve <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>cities.json<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> and <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>countries.json<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> files.</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -715,8 +725,8 @@ src="index_files/image040.png"></p>
 color:black'>'</span>Countries is the source and Countries are entities. Note <span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>Armenia<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span> is rendered in
-top 100 and Left 100 position. Both Japan and Switzerland are gray because there
-is no matching color</p>
+top 100 and Left 100 position. Both Japan and Switzerland are gray because
+there is no matching color</p>
 
 <p class=MsoNormal>for them (Japan does not define <span style='font-size:14.0pt;
 line-height:107%;color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;
@@ -751,7 +761,7 @@ src="index_files/image043.png"></p>
 <p class=MsoNormal>Figure 43</p>
 
 <p class=MsoNormal>I just commented some lines. The same is true for source
-color (red – Countries).</p>
+color.</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -762,12 +772,13 @@ src="index_files/image044.png"></p>
 
 <p class=MsoNormal>Here is cities.json file. The source is Armenia. Entities
 are cities of Armenia. If entities do not provide <span style='font-size:14.0pt;
-line-height:107%;color:black'>'</span>BaseTemplate’<span style='font-size:14.0pt;
-line-height:107%;color:black'>'</span>then the color is inherited form the
+line-height:107%;color:black'>'</span>BaseTemplate<span style='font-size:14.0pt;
+line-height:107%;color:black'>' </span>then the color is inherited form the
 source, in this case</p>
 
-<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate’
-is 100. Entity <span style='font-size:14.0pt;line-height:107%;color:black'>'</span>Yerevan<span
+<p class=MsoNormal><span style='font-size:14.0pt;line-height:107%;color:black'>'</span>BaseTemplate<span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span> is 100. Entity <span
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>Yerevan<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span> will have its
 own color as it is the capital of Armenia.</p>
 
@@ -846,12 +857,12 @@ line-height:107%;color:black'>'</span>selectedEntityId<span style='font-size:
 based on the current page we return different values. The store has</p>
 
 <p class=MsoNormal>two actions. When app is being loaded then
-openEntitiesPage() action is being called.  As you can see we do not load data
+openEntitiesPage() action is being called. As you can see we do not load data
 via component hooks such as</p>
 
 <p class=MsoNormal>componentDidMount() {</p>
 
-<p class=MsoNormal>    fetchAllData();</p>
+<p class=MsoNormal> fetchAllData();</p>
 
 <p class=MsoNormal>} </p>
 
@@ -870,8 +881,6 @@ src="index_files/image051.png"></p>
 
 <p class=MsoNormal>This is the router. It is a simple router not React
 specific.</p>
-
-<p class=MsoNormal> </p>
 
 <p class=MsoNormal><img border=0 width=1072 height=606 id="Picture 71"
 src="index_files/image052.png"></p>
@@ -980,8 +989,8 @@ src="index_files/image059.png"></p>
 <p class=MsoNormal>Figure 59</p>
 
 <p class=MsoNormal><i>Onpopstate </i>is an event handler for the <i>popstate </i>event
-on window. A <i>popstate </i>event is dispatched to the window each time the
-active history entry changes</p>
+on window. A <i>popstate </i>event is dispatched to the window each time the active
+history entry changes</p>
 
 <p class=MsoNormal>between two history entries for the same document. When we
 clicked browser<span style='font-size:14.0pt;line-height:107%;color:black'>'</span>s
@@ -1030,9 +1039,12 @@ easy to do it. What you have to do is</p>
 color:black'>'</span>#/<span style='font-size:14.0pt;line-height:107%;
 color:black'>'</span> to <span style='font-size:14.0pt;line-height:107%;
 color:black'>'</span>/<span style='font-size:14.0pt;line-height:107%;
-color:black'>'</span> in the project and change ‘hash’ to ‘pathname’ in
-ListVisualizer.tsx file ( window.location.hash changed to window.location.pathname)
-. </p>
+color:black'>'</span> in the project and change <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>hash<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> to <span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span>pathname<span style='font-size:14.0pt;
+line-height:107%;color:black'>'</span> in ListVisualizer.tsx file ( window.location.hash
+changed to window.location.pathname) . </p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -1061,9 +1073,9 @@ src="index_files/image063.jpg"></p>
 
 <p class=MsoNormal>Based on the <span style='font-size:14.0pt;line-height:107%;
 color:black'>'</span>store.view.page<span style='font-size:14.0pt;line-height:
-107%;color:black'>'</span> we render the same components in this application (list
-and list items pages look the same). Imagine another application, say, forums.
-You have different pages such as</p>
+107%;color:black'>'</span> we render the same components in this application
+(list and list items pages look the same). Imagine another application, say,
+forums. You have different pages such as</p>
 
 <p class=MsoNormal>forums, topics, create topic, posts pages. In that case you
 will render different components.</p>
@@ -1138,7 +1150,7 @@ color:black'>'</span>Generate Invoices<span style='font-size:14.0pt;line-height:
 107%;color:black'>'</span> turned to orange as it is the one we selected. Also,
 side panel opened so we can update the entry.</p>
 
-<p class=MsoNormal>By the way, instead of store.setSelection(entity)  you could
+<p class=MsoNormal>By the way, instead of store.setSelection(entity) you could
 also call by Id store.setSelection(<span style='font-size:14.0pt;line-height:
 107%;color:black'>'</span>8c048c5d-d34e-49df-ab9c-3c3170da83fb<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>) .</p>
@@ -1152,8 +1164,8 @@ src="index_files/image069.png"></p>
 
 <p class=MsoNormal>I ran store.updateTitle(<span style='font-size:14.0pt;
 line-height:107%;color:black'>'</span>Generate Invoices!!!!!<span
-style='font-size:14.0pt;line-height:107%;color:black'> '</span>) and  you could
-see the title was updated  both on the panel and UI. </p>
+style='font-size:14.0pt;line-height:107%;color:black'> '</span>) and you could
+see the title was updated both on the panel and UI. </p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -1162,8 +1174,8 @@ src="index_files/image070.png"></p>
 
 <p class=MsoNormal>Figure 70</p>
 
-<p class=MsoNormal>I ran store.setSelection(null). The panel was closed and orange
-selection turned into the color we defined for that entity.</p>
+<p class=MsoNormal>I ran store.setSelection(null). The panel was closed and
+orange selection turned into the color we defined for that entity.</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -1305,8 +1317,7 @@ src="index_files/image082.png"></p>
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>test<span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>, <span
 style='font-size:14.0pt;line-height:107%;color:black'>'</span>red<span
-style='font-size:14.0pt;line-height:107%;color:black'>'</span>, 100, 100,
-source).</p>
+style='font-size:14.0pt;line-height:107%;color:black'>'</span>, 100, 100, source).</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -1393,7 +1404,7 @@ src="index_files/image090.png"></p>
 
 <p class=MsoNormal>&nbsp;</p>
 
-<p class=MsoNormal>Unselect the entity.  store.setSelection(null)</p>
+<p class=MsoNormal>Unselect the entity. store.setSelection(null)</p>
 
 <p class=MsoNormal>&nbsp;</p>
 
@@ -1458,9 +1469,7 @@ src="index_files/image096.png"></p>
 
 <p class=MsoNormal>Figure 96</p>
 
-<p class=MsoNormal>Here is the change.</p>
-
-<p class=MsoNormal> </p>
+<p class=MsoNormal>Here is the change. </p>
 
 <p class=MsoNormal><img border=0 width=1203 height=412 id="Picture 114"
 src="index_files/image097.png"></p>
