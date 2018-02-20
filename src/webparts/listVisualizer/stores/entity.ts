@@ -2,7 +2,7 @@ import { types, IModelType, hasParent, getParent } from "mobx-state-tree";
 
 export const Entity = types.model('Entity', {
     Id: types.identifier(),
-    Title: '',
+    Title: types.string,
     bgColor: types.maybe(types.optional(types.string, '')),
     isSource: false,
     x: 0,

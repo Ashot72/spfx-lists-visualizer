@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { reaction } from 'mobx';
 import { Provider } from 'mobx-react';
 import { IListVisualizerProps } from './IListVisualizerProps';
-import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { Store } from '../stores/store';
 import App from './app/App';
 import createRouter from '../router';
@@ -23,9 +23,9 @@ const ListVisualizer: React.SFC<IListVisualizerProps> = () => {
         fetch: l.fetch,
         alert: l.alert, 
         colors,
-        update: data => l.updateTitle(data, store.view.currentUrl),
-        add: data => l.addEntity(data, store.view.currentUrl),
-        remove: data => l.removeEntity(data, store.view.currentUrl)
+        update: data => l.updateTitle(data, store),
+        add: data => l.addEntity(data, store),
+        remove: data => l.removeEntity(data, store)
     });
 
     reaction(
