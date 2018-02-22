@@ -16,15 +16,15 @@ const ContextMenu: React.SFC<IContextMenuProps> = (props) => {
          ? <Callout                    
                 target={ target }
                 directionalHint= { DirectionalHint.topCenter }
-                onDismiss={ () => props.onDismiss() }>    
+                onDismiss={ props.onDismiss }>    
                 <div className={ styles.header }>
-                    { !isSource && currentUrl === '#/' && <div><Link onClick={ () => props.onGoTo() }>{ strings.GoToItems }</Link></div> } 
-                    { isSource && <div><Link onClick={ () => props.onAdd() }>{ currentUrl === '#/' ? strings.AddList :  strings.AddListItem }</Link></div> }             
-                    { !isSource && <div><Link onClick={ () => props.onTitleUpdate() }>{ strings.UpdateTitle }</Link></div> }
-                    { !isSource && <div><Link onClick={ () => props.onRemove() }>{ strings.Remove }</Link></div> }
+                    { !isSource && currentUrl === '#/' && <div><Link onClick={ props.onGoTo }>{ strings.GoToItems }</Link></div> } 
+                    { isSource && <div><Link onClick={ props.onAdd }>{ currentUrl === '#/' ? strings.AddList :  strings.AddListItem }</Link></div> }             
+                    { !isSource && <div><Link onClick={ props.onTitleUpdate }>{ strings.UpdateTitle }</Link></div> }
+                    { !isSource && <div><Link onClick={ props.onRemove }>{ strings.Remove }</Link></div> }
                 </div>
                 <div className={styles.inner}>                        
-                    <PrimaryButton  onClick={ () => props.onShowMenuClicked() } text={ strings.Close } />                        
+                    <PrimaryButton  onClick={ props.onShowMenuClicked } text={ strings.Close } />                        
                 </div>         
             </Callout> : null 
     );   
