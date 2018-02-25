@@ -4,10 +4,10 @@ import ListsService from './ListsService';
 import { IDataStructure } from '../services/IDataStructure';
 import { IStore } from '../stores/store';
 
-    export const fetch = (entityId: string) => {
+    export const fetch = (entityId: string): Promise<IDataStructure> => {
       return entityId
-       ? ListsService.getListItems(entityId).then((data: IDataStructure) => data)
-       : ListsService.getLists().then((data: IDataStructure) => data);        
+       ? ListsService.getListItems(entityId)
+       : ListsService.getLists();        
     };
 
     export const addEntity = ({ source, title }, { view: { currentUrl }}): Promise<string | number> => {   
