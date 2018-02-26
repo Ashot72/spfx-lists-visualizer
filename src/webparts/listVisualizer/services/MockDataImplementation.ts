@@ -10,17 +10,9 @@ import { get } from '@microsoft/sp-lodash-subset';
      : window.fetch(countries).then(response => response.json());        
   };
 
-  export const addEntity = ({ source, title }, { view: { currentUrl }}): Promise<string | number> => {   
-     return Promise.resolve(1);
-  };
-
-  export const updateTitle = ({ source, entity, title }, { view: { currentUrl }}): Promise<void> => {  
-     return Promise.resolve();    
-  };
-
-  export const removeEntity = ({ source, entity }, { view: { currentUrl }}): Promise<void> => {
-     return Promise.resolve();          
-  };
+  export const addEntity = ({ source, title }, { view: { currentUrl }}): Promise<string | number> => Promise.resolve(1); 
+  export const updateTitle = ({ source, entity, title }, { view: { currentUrl }}): Promise<void> => Promise.resolve();
+  export const removeEntity = ({ source, entity }, { view: { currentUrl }}): Promise<void> => Promise.resolve();   
 
   export const alert = (error: any) => {       
       const odataError: string = get(error, 'data.responseBody.["odata.error"].message.value');
