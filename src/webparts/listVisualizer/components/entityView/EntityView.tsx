@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import * as strings from 'ListVisualizerWebPartStrings';
 import { inject, observer } from 'mobx-react';
 import { DraggableCore } from 'react-draggable';
@@ -52,18 +53,21 @@ export default class EntityView extends React.Component<IEntityViewProps, IEntit
         );
     }
 
-    private onGoTo= () => {            
+    @autobind
+    private onGoTo() {            
         const { store, entity } = this.props;
         store.view.openEntityPageById(entity.Id);
     }
 
-    private onAddEntity = () => {      
+    @autobind
+    private onAddEntity() {       
         const { store, entity } = this.props;     
         const bgColor = store.view.currentUrl === '#/' ? colors(100) : entity.bgColor;     
         store.createEntity(strings.UpdateTitle, bgColor, X(), Y(), entity);
     }
 
-    private onTitleUpdate = () => {
+    @autobind
+    private onTitleUpdate() {
         const { store, entity } = this.props;
         store.setSelection(entity);
     }
@@ -72,14 +76,16 @@ export default class EntityView extends React.Component<IEntityViewProps, IEntit
     private onDismiss = () => this.setState({ isCalloutVisible: false });
     private onShowMenuClicked = () => this.setState({ isCalloutVisible: !this.state.isCalloutVisible });
 
-    private handleClick = (e) => {                
+    @autobind
+    private handleClick() {                
         if (!this.state.dragged) {
             this.setState({ isCalloutVisible: !this.state.isCalloutVisible });           
         }   
         this.setState({ dragged: false }); 
     }
 
-    private handleDrag = (e, dragInfo) => { 
+    @autobind
+    private handleDrag(e, dragInfo) { 
         const { deltaX, deltaY } = dragInfo;
         // DraggableCore does not behave properly on chrome so we use setState: dragged
         (deltaX === 0 && deltaY === 0) 
