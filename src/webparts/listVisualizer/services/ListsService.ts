@@ -17,8 +17,8 @@ export default class ListsService {
     public static getListItems(id: string) : Promise<IDataStructure> {
         let batch = sp.web.createBatch();
 
-        const list: Promise<IData> = sp.web.lists.getById(id).select("Id", "Title", "BaseTemplate").get();
-        const listItems: Promise<IData[]> = sp.web.lists.getById(id).items.select("Id", "Title").filter("Title ne null").get();
+        const list: Promise<IData> = sp.web.lists.getById(id).select("Id", "Title", "BaseTemplate").inBatch(batch).get();
+        const listItems: Promise<IData[]> = sp.web.lists.getById(id).items.select("Id", "Title").filter("Title ne null").inBatch(batch).get();
 
         return batch.execute().then(() => Promise.all([list, listItems]).then(([source, entities]) => ({ source, entities })));    
     }
