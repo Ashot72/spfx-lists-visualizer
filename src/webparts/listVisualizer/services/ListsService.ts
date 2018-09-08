@@ -5,22 +5,30 @@ import { IDataStructure } from "./IDataStructure";
 export default class ListsService {
 
     public static getLists() : Promise<IDataStructure> {
-        let batch = sp.web.createBatch();
 
-        const web: Promise<IData> = sp.web.inBatch(batch).select("Id", "Title").get();
-        const lists: Promise<IData[]> = sp.web.lists.select("Id", "Title", "BaseTemplate")
-                                                    .filter("Hidden eq false and IsCatalog eq false").inBatch(batch).get();
+        let web, lists;      
+        let batch = sp.web.createBatch();       
 
-        return batch.execute().then(() => Promise.all([web, lists]).then(([source, entities]) => ({ source, entities })));       
+        sp.web.inBatch(batch).select("Id", "Title").get().then(r => web = r);        
+        sp.web.lists.select("Id", "Title", "BaseTemplate")
+                                                    .filter("Hidden eq false and IsCatalog eq false").inBatch(batch).get()
+                                                    .then(r => lists = r);
+
+        return batch.execute().then(() => { 
+            return { source: web, entities: lists };
+        });       
     }
 
     public static getListItems(id: string) : Promise<IDataStructure> {
         let batch = sp.web.createBatch();
+        let list, listItems;
 
-        const list: Promise<IData> = sp.web.lists.getById(id).select("Id", "Title", "BaseTemplate").inBatch(batch).get();
-        const listItems: Promise<IData[]> = sp.web.lists.getById(id).items.select("Id", "Title").filter("Title ne null").inBatch(batch).get();
+        sp.web.lists.getById(id).select("Id", "Title", "BaseTemplate").inBatch(batch).get().then(r => list = r); ;
+        sp.web.lists.getById(id).items.select("Id", "Title").filter("Title ne null").inBatch(batch).get().then(r => listItems = r); ;
 
-        return batch.execute().then(() => Promise.all([list, listItems]).then(([source, entities]) => ({ source, entities })));    
+        return batch.execute().then(() => { 
+            return { source: list, entities: listItems };
+        });             
     }
 
     public static updateListTitle(title: string, newTitle: string): Promise<void> {        
